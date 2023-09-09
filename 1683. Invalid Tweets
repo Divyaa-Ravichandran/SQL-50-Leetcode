@@ -1,0 +1,4 @@
+
+
+
+select tweet_id from Tweets where len(cast(content as char)) > 15;
