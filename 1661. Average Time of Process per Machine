@@ -1,0 +1,9 @@
+
+URL: https://leetcode.com/problems/average-time-of-process-per-machine/description/?envType=study-plan-v2&envId=top-sql-50
+
+/* Write your T-SQL query statement below */
+Select a1.machine_id, round(AVG(a2.timestamp-a1.timestamp),3) as processing_time from Activity a1
+join Activity a2
+
+on a1.process_id=a2.process_id and a1.machine_id=a2.machine_id and a1.timestamp<a2.timestamp 
+group by a1.machine_id
