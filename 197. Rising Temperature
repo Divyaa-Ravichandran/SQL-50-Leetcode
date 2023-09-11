@@ -2,9 +2,8 @@ URL:  https://leetcode.com/problems/rising-temperature/description/?envType=stud
 
 
 /* Write your T-SQL query statement below */
-
-select w1.id
-from Weather w1
-inner join Weather w2
-on datediff(w1.recordDate, w2.recordDate) = 1 
-and w1.temperature > w2.temperature
+/* Write your T-SQL query statement below */
+select W1.id as Id
+from Weather W1, Weather W2
+where W2.recordDate = DATEADD(day, -1, W1.recordDate) 
+and W1.temperature > W2.temperature
