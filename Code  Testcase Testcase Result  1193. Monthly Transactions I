@@ -1,0 +1,13 @@
+
+URL:  https://leetcode.com/problems/monthly-transactions-i/description/?envType=study-plan-v2&envId=top-sql-50
+
+
+/* Write your T-SQL query statement below */
+with t as (
+  SELECT id,country,state,amount,trans_date,format(trans_date,'yyyy-MM') as month,
+  case when state = 'approved' then 1 else 0 end as coef
+  FROM Transactions
+)
+SELECT month, country,count(*) as trans_count, sum(coef) as approved_count, sum(amount) as trans_total_amount , sum(amount*coef) as approved_total_amount 
+FROM t
+GROUP BY month, country
